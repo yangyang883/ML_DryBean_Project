@@ -6,8 +6,8 @@
   "recall_weighted": 0.9342345633905736,
   "weighted_f1": 0.9343058772130919,
   "f1_weighted": 0.9343058772130919,
-  "avg_predict_time_ms": 739.9412400000074,
-  "inference_time_ms": 739.9412400000074,
+  "avg_predict_time_ms": 311.2127199999975,
+  "inference_time_ms": 311.2127199999975,
   "overfit_gap": 0.004842814810406271,
   "overfit_level": "低",
   "overfit_comment": "训练集和测试集表现接近，模型泛化能力较好。",
@@ -16,6 +16,6 @@
   "model_weakness": "推理速度相对较慢，对参数和数据规模比较敏感。",
   "final_comment": "该模型测试准确率较高，但推理速度相对较慢，适合更重视精度的场景。",
   "classification_report": "              precision    recall  f1-score   support\n\n    BARBUNYA       0.93      0.93      0.93       271\n      BOMBAY       1.00      0.97      0.99       111\n        CALI       0.94      0.95      0.94       325\n    DERMASON       0.92      0.93      0.92       691\n       HOROZ       0.97      0.95      0.96       402\n       SEKER       0.95      0.96      0.96       418\n        SIRA       0.89      0.89      0.89       519\n\n    accuracy                           0.93      2737\n   macro avg       0.94      0.94      0.94      2737\nweighted avg       0.93      0.93      0.93      2737\n",
-  "train_time_sec": 4.5527002,
-  "train_time_seconds": 4.5527002
+  "train_time_sec": 2.1257681,
+  "train_time_seconds": 2.1257681
 }

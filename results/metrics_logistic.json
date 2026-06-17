@@ -6,8 +6,8 @@
   "recall_weighted": 0.9265619291194739,
   "weighted_f1": 0.9268098189717329,
   "f1_weighted": 0.9268098189717329,
-  "avg_predict_time_ms": 0.7167800000047464,
-  "inference_time_ms": 0.7167800000047464,
+  "avg_predict_time_ms": 0.4810599999984788,
+  "inference_time_ms": 0.4810599999984788,
   "overfit_gap": -0.0006120354336089928,
   "overfit_level": "低",
   "overfit_comment": "训练集和测试集表现接近，模型泛化能力较好。",
@@ -16,6 +16,6 @@
   "model_weakness": "表达能力有限，对复杂非线性分类边界的拟合能力不如核方法和集成模型。",
   "final_comment": "该模型推理速度很快，训练集和测试集表现较接近，适合作为稳定基线。",
   "classification_report": "              precision    recall  f1-score   support\n\n    BARBUNYA       0.93      0.94      0.93       271\n      BOMBAY       1.00      1.00      1.00       111\n        CALI       0.94      0.93      0.94       325\n    DERMASON       0.92      0.91      0.92       691\n       HOROZ       0.97      0.95      0.96       402\n       SEKER       0.96      0.95      0.95       418\n        SIRA       0.86      0.89      0.87       519\n\n    accuracy                           0.93      2737\n   macro avg       0.94      0.94      0.94      2737\nweighted avg       0.93      0.93      0.93      2737\n",
-  "train_time_sec": 0.43479200000000073,
-  "train_time_seconds": 0.43479200000000073
+  "train_time_sec": 0.2182764000000006,
+  "train_time_seconds": 0.2182764000000006
 }
