@@ -1,0 +1,6 @@
+model,recomputed_accuracy,summary_accuracy,metric_values_match,confusion_matrix_sum_ok,classification_report_accuracy_ok,prediction_file,passed
+logistic,0.9265619291194739,0.926561929119474,True,True,True,results/predictions_logistic.csv,True
+knn,0.9203507489952503,0.9203507489952504,True,True,True,results/predictions_knn.csv,True
+svm,0.9342345633905736,0.9342345633905736,True,True,True,results/predictions_svm.csv,True
+random_forest,0.9185239313116551,0.9185239313116552,True,True,True,results/predictions_random_forest.csv,True
+xgboost,0.9254658385093167,0.9254658385093169,True,True,True,results/predictions_xgboost.csv,True

@@ -1,0 +1,28 @@
+# Python cache and local environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Reproducibility comparison snapshots generated during validation
+results/repro_run*/
+
+# Keep trained models, datasets, reports, and figures in the repository
+# so the teacher can open the Streamlit demo immediately after cloning.

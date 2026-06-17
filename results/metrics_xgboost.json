@@ -1,0 +1,21 @@
+{
+  "model": "xgboost",
+  "train_accuracy": 0.9845613386336323,
+  "test_accuracy": 0.9254658385093167,
+  "precision_weighted": 0.9258296580165017,
+  "recall_weighted": 0.9254658385093167,
+  "weighted_f1": 0.9256137255341738,
+  "f1_weighted": 0.9256137255341738,
+  "avg_predict_time_ms": 135.58652000000393,
+  "inference_time_ms": 135.58652000000393,
+  "overfit_gap": 0.059095500124315525,
+  "overfit_level": "高",
+  "overfit_comment": "训练集准确率明显高于测试集，存在一定过拟合。",
+  "loss_curve": "available",
+  "model_strength": "提升树模型能够逐步修正前序模型错误，通常适合结构化表格数据。",
+  "model_weakness": "参数较多，训练过程更复杂，若控制不好可能出现一定过拟合。",
+  "final_comment": "该模型训练集准确率明显高于测试集，存在一定过拟合，需要结合泛化表现谨慎选择。",
+  "classification_report": "              precision    recall  f1-score   support\n\n    BARBUNYA       0.95      0.93      0.94       271\n      BOMBAY       1.00      1.00      1.00       111\n        CALI       0.94      0.94      0.94       325\n    DERMASON       0.90      0.91      0.90       691\n       HOROZ       0.97      0.95      0.96       402\n       SEKER       0.95      0.94      0.95       418\n        SIRA       0.87      0.88      0.88       519\n\n    accuracy                           0.93      2737\n   macro avg       0.94      0.94      0.94      2737\nweighted avg       0.93      0.93      0.93      2737\n",
+  "train_time_sec": 9.8570146,
+  "train_time_seconds": 9.8570146
+}

@@ -1,0 +1,21 @@
+{
+  "model": "random_forest",
+  "train_accuracy": 1.0,
+  "test_accuracy": 0.9185239313116551,
+  "precision_weighted": 0.9188288010456988,
+  "recall_weighted": 0.9185239313116551,
+  "weighted_f1": 0.9186291626604361,
+  "f1_weighted": 0.9186291626604361,
+  "avg_predict_time_ms": 140.17529999999851,
+  "inference_time_ms": 140.17529999999851,
+  "overfit_gap": 0.0814760686883449,
+  "overfit_level": "高",
+  "overfit_comment": "训练集准确率明显高于测试集，存在一定过拟合。",
+  "loss_curve": "N/A",
+  "model_strength": "集成多棵决策树，抗噪能力较好，对特征尺度不敏感。",
+  "model_weakness": "训练集准确率过高时可能存在过拟合，模型解释性弱于线性模型。",
+  "final_comment": "该模型训练集准确率明显高于测试集，存在一定过拟合，需要结合泛化表现谨慎选择。",
+  "classification_report": "              precision    recall  f1-score   support\n\n    BARBUNYA       0.93      0.91      0.92       271\n      BOMBAY       1.00      1.00      1.00       111\n        CALI       0.93      0.92      0.93       325\n    DERMASON       0.90      0.92      0.91       691\n       HOROZ       0.96      0.94      0.95       402\n       SEKER       0.94      0.94      0.94       418\n        SIRA       0.86      0.87      0.87       519\n\n    accuracy                           0.92      2737\n   macro avg       0.93      0.93      0.93      2737\nweighted avg       0.92      0.92      0.92      2737\n",
+  "train_time_sec": 19.7860678,
+  "train_time_seconds": 19.7860678
+}
