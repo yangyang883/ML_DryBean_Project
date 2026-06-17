@@ -20,6 +20,9 @@ desktop.ini
 *.log
 *.tmp
 *.bak
+~$*.docx
+~$*.pptx
+~$*.xlsx
 
 # Reproducibility comparison snapshots generated during validation
 results/repro_run*/
