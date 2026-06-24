@@ -2,6 +2,12 @@
 
 本项目是机器学习期末大作业，主题为 Dry Bean Dataset 多分类机器学习系统。项目从 dirty 数据出发，完成数据分析、数据清洗与特征工程、多算法实验、鲁棒性分析、推理速度分析、Streamlit 展示页面和统一命令行调用，目标是保证老师能够从 GitHub 克隆后复现实验。
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-机器学习-F7931E?logo=scikitlearn&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-扩展算法-EC4E20)
+![Streamlit](https://img.shields.io/badge/Streamlit-中文交互界面-FF4B4B?logo=streamlit&logoColor=white)
+![Status](https://img.shields.io/badge/实验状态-已完成-2E8B57)
+
 ## 1. 项目简介
 
 Dry Bean Dataset 是一个干豆品种识别数据集，原始数据来自干豆图像的形态学特征提取。任务目标是根据数值特征预测豆类品种，属于多分类问题。
@@ -17,6 +23,93 @@ Dry Bean Dataset 是一个干豆品种识别数据集，原始数据来自干豆
 - SIRA
 
 输入特征共 16 个，主要描述豆粒的面积、周长、长轴、短轴、偏心率、凸包面积、等效直径、紧致度、圆度和形状因子等。当前项目使用 dirty 版本数据，因此包含缺失值、重复样本、标签污染、异常值、类别不平衡、特征尺度差异和强相关特征等问题。
+
+## 项目成果速览
+
+### 数据与实验规模
+
+| 项目 | 数量 | 说明 |
+| --- | ---: | --- |
+| 总样本数 | 13,578 | 训练集、验证集与测试集合计 |
+| 训练集 | 9,509 | 用于拟合预处理器和模型 |
+| 验证集 | 1,332 | 用于训练过程评估 |
+| 测试集 | 2,737 | 全程保持独立，仅用于最终评价 |
+| 原始特征 | 16 | 干豆尺寸、轮廓与形状特征 |
+| 标准类别 | 7 | BARBUNYA、BOMBAY、CALI、DERMASON、HOROZ、SEKER、SIRA |
+| 对比模型 | 5 | Logistic、KNN、SVM、Random Forest、XGBoost |
+
+### 核心模型结果
+
+| 模型 | 训练集准确率 | 测试集准确率 | 加权 F1 | 过拟合差值 | 结论 |
+| --- | ---: | ---: | ---: | ---: | --- |
+| 逻辑回归 | 92.59% | 92.66% | 92.68% | -0.06% | 速度最快，泛化稳定 |
+| K近邻 | 100.00% | 92.04% | 92.07% | 7.96% | 精度较好，但存在过拟合 |
+| **支持向量机** | **93.91%** | **93.42%** | **93.43%** | **0.48%** | **测试精度最高，综合表现最佳** |
+| 随机森林 | 100.00% | 91.85% | 91.86% | 8.15% | 训练拟合充分，泛化差距较大 |
+| XGBoost | 98.46% | 92.55% | 92.56% | 5.91% | 非线性建模与鲁棒性较均衡 |
+
+### 推理速度结果
+
+所有模型均对相同的 2,737 条测试样本重复预测 20 次后取平均值，计时过程不包含模型训练。
+
+| 速度排名 | 模型 | 整个测试集平均耗时 | 单样本平均耗时 | 应用特点 |
+| ---: | --- | ---: | ---: | --- |
+| 1 | **逻辑回归** | **0.45 ms** | **0.17 μs** | 适合实时和高并发预测 |
+| 2 | K近邻 | 40.86 ms | 14.93 μs | 预测时需要计算样本距离 |
+| 3 | XGBoost | 78.47 ms | 28.67 μs | 精度与速度较均衡 |
+| 4 | 随机森林 | 80.57 ms | 29.44 μs | 需要汇总多棵决策树结果 |
+| 5 | 支持向量机 | 312.49 ms | 114.17 μs | 精度最高，但核预测耗时较长 |
+
+### 数据分析可视化
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="results/figures/class_distribution.png" alt="类别分布图"><br><b>清洗后类别分布</b></td>
+    <td width="50%" align="center"><img src="results/figures/feature_correlation_heatmap.png" alt="特征相关性热力图"><br><b>特征相关性热力图</b></td>
+  </tr>
+</table>
+
+类别分布图反映 DERMASON 样本最多、BOMBAY 样本最少，因此实验同时报告准确率与加权 F1。相关性图显示 Area、Perimeter、ConvexArea 和 EquivDiameter 等尺寸特征相关性较强。
+
+### 模型性能可视化
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="results/figures/accuracy_comparison.png" alt="准确率对比"><br><b>测试集准确率对比</b></td>
+    <td width="50%" align="center"><img src="results/figures/f1_comparison.png" alt="加权F1对比"><br><b>加权 F1 对比</b></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="results/figures/speed_comparison.png" alt="推理速度对比"><br><b>模型推理时间对比</b></td>
+    <td width="50%" align="center"><img src="results/figures/loss_comparison.png" alt="损失曲线对比"><br><b>迭代模型损失曲线</b></td>
+  </tr>
+</table>
+
+准确率和 F1 均表明 SVM 的最终分类效果最佳；逻辑回归虽然精度略低，但推理速度优势明显。损失曲线仅展示具有迭代优化过程的模型，KNN 与随机森林不伪造 loss 曲线。
+
+### 鲁棒性可视化
+
+| 噪声类型 | 强度设置 | 实验方法 | 主要发现 |
+| --- | --- | --- | --- |
+| Gaussian Noise | 0.01、0.05、0.10、0.20 | 对训练特征加入高斯扰动并重新训练 | 大多数模型精度下降较小 |
+| Mask Noise | 0.01、0.05、0.10、0.20 | 随机遮蔽训练集部分特征并重新训练 | 高强度下对 Logistic 与 SVM 影响更明显 |
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="results/figures/robustness_comparison.png" alt="鲁棒性对比"><br><b>不同噪声强度下的测试准确率</b></td>
+    <td width="50%" align="center"><img src="results/figures/robustness_drop_heatmap.png" alt="鲁棒性下降热力图"><br><b>模型精度下降热力图</b></td>
+  </tr>
+</table>
+
+鲁棒性实验只污染训练集并重新训练，测试集始终保持干净。部分低强度噪声下精度略有提升，说明噪声可能产生轻微的数据增强或正则化作用，并非人工修正结果。
+
+### 最佳模型混淆矩阵
+
+<p align="center">
+  <img src="results/figures/confusion_matrix_svm.png" alt="SVM混淆矩阵" width="78%"><br>
+  <b>SVM 测试集混淆矩阵</b>
+</p>
+
+SVM 混淆矩阵的对角线最集中，说明多数样本被正确分类；主要误差发生在形态特征相近的类别之间。矩阵样本总数为 2,737，与独立测试集规模一致。
 
 ## 2. 作业评分点对应表
 
